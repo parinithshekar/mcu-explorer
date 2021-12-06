@@ -5,13 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/main.css" />
-    <script src="https://d3js.org/d3.v3.min.js" defer></script>
-    <!-- <script src="lib/radarChart.js" defer></script> -->
-    <script src="lib/radarChartSmooth.js" defer></script>
-    <script src="src/index.js" defer></script>
+
+    <!-- D3 -->
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+
+    <!-- Data -->
+    <script src="data/stateages.js"></script>
+
+    <!-- Chart examples -->
+    <script src="lib/radarChartSmoothv7.js" defer></script>
+    <script src="lib/stackedBarChart.js" defer></script>
+    <script src="lib/groupedBarChart.js"></script>
+
+    <!-- Source -->
+    <script src="src/characterScreenTimeChart.js" defer></script>
+    <script src="src/characterShdbStatsBarChart.js" defer></script>
     <title>MCU DataVis</title>
   </head>
   <body>
-    <div id="spider"></div>
+    <div id="chart"></div>
+    <div id="stacked-bar"></div>
   </body>
 </html>

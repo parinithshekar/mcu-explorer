@@ -21,7 +21,7 @@ var oldData = [
   },
 ];
 
-console.log('D3 version', d3.version);
+
 
 /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
@@ -76,7 +76,11 @@ var data = [
 //////////////////// Draw the Chart //////////////////////////
 //////////////////////////////////////////////////////////////
 
-var color = d3.scale.ordinal().range(['#EDC951', '#CC333F', '#00A0B0']);
+// v3
+// var color = d3.scale.ordinal().range(['#EDC951', '#CC333F', '#00A0B0']);
+
+//v7
+var color = d3.scaleOrdinal().range(['#EDC951', '#CC333F', '#00A0B0']);
 
 var radarChartOptions = {
   w: width,
