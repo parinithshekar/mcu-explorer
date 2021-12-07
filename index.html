@@ -9,21 +9,30 @@
     <!-- D3 -->
     <script src="https://d3js.org/d3.v7.min.js" defer></script>
 
+    <!-- Constant IDs for characters and movies -->
+    <script src="src/constants.js" defer></script>
+
     <!-- Data -->
-    <script src="data/stateages.js"></script>
+    <script src="data/stateages.js" defer></script>
+    <script src="data/alphabet.js" defer></script>
+    <script src="data/characterWords.js" defer></script>
+    <script src="data/characterStats.js" defer></script>
 
     <!-- Chart examples -->
     <script src="lib/radarChartSmoothv7.js" defer></script>
     <script src="lib/stackedBarChart.js" defer></script>
-    <script src="lib/groupedBarChart.js"></script>
+    <script src="lib/groupedBarChart.js" defer></script>
+    <script src="lib/orderedBarChart.js" defer></script>
 
     <!-- Source -->
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterShdbStatsBarChart.js" defer></script>
+    <script src="src/movieRevenueChart.js" defer></script>
     <title>MCU DataVis</title>
   </head>
   <body>
     <div id="chart"></div>
     <div id="stacked-bar"></div>
+    <div id="sortable-bar"></div>
   </body>
 </html>
