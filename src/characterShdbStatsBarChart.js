@@ -2,8 +2,6 @@ width = 600;
 
 characterStatsData = [];
 
-console.log(characterWords);
-
 for (const characterId in charactersStats) {
   stats = charactersStats[characterId];
   for (const ability in stats) {

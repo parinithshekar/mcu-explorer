@@ -5,3 +5,7 @@
   overflow-y: scroll;
   margin-left: 2rem;
 }
+
+.dropdown {
+  width: 3rem !important;
+}

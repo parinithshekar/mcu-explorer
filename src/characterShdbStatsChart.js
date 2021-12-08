@@ -21,8 +21,6 @@ var oldData = [
   },
 ];
 
-
-
 /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
 //////////////////////////////////////////////////////////////
@@ -92,4 +90,4 @@ var radarChartOptions = {
   color: color,
 };
 //Call function to draw the Radar chart
-RadarChart('#spider', data, radarChartOptions);
+RadarChart('#radar-chart', data, radarChartOptions);
