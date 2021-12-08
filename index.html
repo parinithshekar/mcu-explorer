@@ -14,6 +14,7 @@
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v7.min.js" defer></script>
+    <script src="https://unpkg.com/d3-sankey@0" defer></script>
 
     <!-- Constant IDs for characters and movies -->
     <script src="src/constants.js" defer></script>
@@ -32,10 +33,12 @@
     <script src="lib/charts/stackedBarChart.js" defer></script>
     <script src="lib/charts/groupedBarChart.js" defer></script>
     <script src="lib/charts/orderedBarChart.js" defer></script>
+    <script src="lib/charts/sankeyChart.js" defer></script>
 
     <!-- Source -->
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterWordsChart.js" defer></script>
+    <script src="src/characterMoviesChart.js" defer></script>
     <script src="src/characterShdbStatsBarChart.js" defer></script>
     <script src="src/characterShdbStatsChart.js" defer></script>
     <script src="src/movieRevenueChart.js" defer></script>
@@ -63,6 +66,9 @@
       <!-- <div id="chart"></div> -->
       <!-- <div id="stacked-bar"></div> -->
       <div id="sortable-bar"></div>
+
+      <div id="characters-movies-crown"></div>
+
     </div>
   </body>
 </html>
