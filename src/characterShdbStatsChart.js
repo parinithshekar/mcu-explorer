@@ -1,25 +1,14 @@
-var oldData = [
-  {
-    className: 'germany', // optional, can be used for styling
-    axes: [
-      { axis: 'strength', value: 13, yOffset: 10 },
-      { axis: 'intelligence', value: 6 },
-      { axis: 'charisma', value: 5 },
-      { axis: 'dexterity', value: 9 },
-      { axis: 'luck', value: 2, xOffset: -20 },
-    ],
-  },
-  {
-    className: 'argentina',
-    axes: [
-      { axis: 'strength', value: 6 },
-      { axis: 'intelligence', value: 7 },
-      { axis: 'charisma', value: 10 },
-      { axis: 'dexterity', value: 13 },
-      { axis: 'luck', value: 9 },
-    ],
-  },
-];
+let characterStatsData = [];
+
+for (characterId in characterStats) {
+  statsEntry = [];
+  characterAbilities = characterStats[characterId];
+  for (ability in characterAbilities) {
+    abilityEntry = { axis: ability, value: characterAbilities[ability] };
+    statsEntry.push(abilityEntry);
+  }
+  characterStatsData.push(statsEntry);
+}
 
 /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
@@ -78,16 +67,16 @@ var data = [
 // var color = d3.scale.ordinal().range(['#EDC951', '#CC333F', '#00A0B0']);
 
 //v7
-var color = d3.scaleOrdinal().range(['#EDC951', '#CC333F', '#00A0B0']);
+var color = d3.scaleOrdinal().range(['#EDC951', '#CC333F', '#00A0B0', '#F432A0']);
 
 var radarChartOptions = {
   w: width,
   h: height,
   margin: margin,
-  maxValue: 0.5,
+  maxValue: 100,
   levels: 5,
   roundStrokes: false,
   color: color,
 };
 //Call function to draw the Radar chart
-RadarChart('#radar-chart', data, radarChartOptions);
+RadarChart('#radar-chart', characterStatsData, radarChartOptions);
