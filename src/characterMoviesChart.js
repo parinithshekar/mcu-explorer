@@ -4,8 +4,8 @@ nodes_list = [ {id:"Thor",value:"Thor"},{id:"IronMan",value:"IronMan"}, {id:"mov
 links_list = [ {source:"Thor",target:"movie1", value:1}, {source:"IronMan",target:"movie1", value:1}, {source:"Thor",target:"movie2", value:1} ];
 
 
-console.log(nodes_list);
-console.log(links_list);
+// console.log(nodes_list);
+// console.log(links_list);
 charactersAndMoviesCrownChart = SankeyChart(
     {links:links_list},
     {
@@ -16,5 +16,5 @@ charactersAndMoviesCrownChart = SankeyChart(
         width,
         height: 600
     });
-console.log("Killroy was here")
+// console.log("Killroy was here")
 document.getElementById('characters-movies-crown').appendChild(charactersAndMoviesCrownChart);

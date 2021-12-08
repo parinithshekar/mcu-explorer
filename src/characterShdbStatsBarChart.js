@@ -2,8 +2,8 @@ width = 600;
 
 characterStatsData = [];
 
-for (const characterId in charactersStats) {
-  stats = charactersStats[characterId];
+for (const characterId in characterStats) {
+  stats = characterStats[characterId];
   for (const ability in stats) {
     entry = { character: CHARACTER_ID[characterId] };
     entry.ability = ability;
@@ -48,4 +48,4 @@ statsBarChart = GroupedBarChart(characterStatsData, {
 //   height: 500,
 // });
 
-document.getElementById('stacked-bar').appendChild(statsBarChart);
+// document.getElementById('stacked-bar').appendChild(statsBarChart);

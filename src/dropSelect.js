@@ -21,12 +21,12 @@ var movieSelect = sellect('#movie-select', {
 
 function handleCharacterListChange(event, item) {
   newCharacterList = characterSelect.getSelected();
-  console.log(newCharacterList);
+  // console.log(newCharacterList);
 }
 
 function handleMovieListChange(event, item) {
   newMovieList = movieSelect.getSelected();
-  console.log(newMovieList);
+  // console.log(newMovieList);
 }
 
 characterSelect.init();

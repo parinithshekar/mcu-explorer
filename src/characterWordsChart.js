@@ -1,5 +1,6 @@
 width = 800;
 
+// TODO Need to avoid zeroes in this data before passing to chart
 characterWordsData = [];
 
 for (movieId in characterWords) {

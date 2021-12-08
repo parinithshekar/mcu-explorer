@@ -5,12 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500&display=swap" rel="stylesheet">
+    
     <!-- CSS -->
-    <!-- <link rel="stylesheet" href="font-awesome.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/nonsense.css"/>
     <link rel="stylesheet" href="css/sellect.css" />
+    <link rel="stylesheet" href="css/nonsense.css"/>
+    <link rel="stylesheet" href="css/main.css" />
+
 
     <!-- D3 -->
     <script src="https://d3js.org/d3.v7.min.js" defer></script>
@@ -39,7 +44,7 @@
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterWordsChart.js" defer></script>
     <script src="src/characterMoviesChart.js" defer></script>
-    <script src="src/characterShdbStatsBarChart.js" defer></script>
+    <!-- <script src="src/characterShdbStatsBarChart.js" defer></script> -->
     <script src="src/characterShdbStatsChart.js" defer></script>
     <script src="src/movieRevenueChart.js" defer></script>
     <script src="src/dropSelect.js" defer></script>
@@ -48,19 +53,26 @@
   <body>
     <div class="main-container">
 
-      <h1>MCU best project ever</h1>
+      <h1>Marvel Cinetmatic Universe Explorer</h1>
 
       <div class="row">
         <div class="block" id="inputs">
-          <input type="text" class="dropdown" id="character-select"></input>
-          <input type="text" class="dropdown" id="movie-select"></input>
+          <h3>Select characters and movies to visualize!</h3>
+          <div class="selections">
+            <div class="selection">
+              <input type="text" class="dropdown" id="character-select"></input>
+            </div>
+            <div class="selection">
+              <input type="text" class="dropdown" id="movie-select"></input>
+            </div>
+          </div>
         </div>
-        <div class="block" id="radar-chart"></div>
+        <div class="block has-chart" id="radar-chart"></div>
       </div>
 
       <div class="row">
-        <div class="block" id="character-screen-time"></div>
-        <div class="block" id="character-words"></div>
+        <div class="block has-chart" id="character-screen-time"></div>
+        <div class="block has-chart" id="character-words"></div>
       </div>
       
       <!-- <div id="chart"></div> -->
