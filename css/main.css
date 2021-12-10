@@ -63,6 +63,10 @@ h3 {
   text-align: center;
 }
 
+text, tspan {
+  font-size: 1.5em;
+}
+
 * {
   font-family: 'Readex Pro', sans-serif;
 }

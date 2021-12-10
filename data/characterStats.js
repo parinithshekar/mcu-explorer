@@ -1,7 +1,5 @@
 const abilities = ['Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat', 'Tier'];
 
-const abilityColors = ['#e41a1c', '#377eb8', '#4daf4a', '#984ea3', '#ff7f00', '#ffff33', '#a65628'];
-
 const characterStats = {
   [CHARACTER.IRON_MAN.id]: {
     Intelligence: 85,
@@ -40,3 +38,17 @@ const characterStats = {
     Tier: 3,
   },
 };
+
+let abilityStatistics = {};
+for (ability of abilities) {
+  const allValues = Object.values(characterStats).map((stats) => stats[ability]);
+  const maxValue = Math.max(...allValues);
+  const minValue = Math.min(...allValues);
+  abilityStatistics[ability] = { max: maxValue, min: minValue };
+}
+
+function scaleAbilityStat(ability, value) {
+  const abilityInfo = abilityStatistics[ability];
+  const multiplier = 100 / (abilityInfo.max + (0.25 * abilityInfo.min));
+  return value * multiplier;
+}

@@ -4,11 +4,27 @@ for (characterId in characterStats) {
   statsEntry = [];
   characterAbilities = characterStats[characterId];
   for (ability in characterAbilities) {
-    abilityEntry = { axis: ability, value: characterAbilities[ability] };
+    abilityEntry = {
+      axis: ability,
+      value: scaleAbilityStat(ability, characterAbilities[ability]),
+      realValue: characterAbilities[ability],
+    };
     statsEntry.push(abilityEntry);
   }
   characterStatsData.push(statsEntry);
 }
+
+// Plot the smallest polygon at the top
+characterStatsData.sort((a, b) => {
+  aTotal = a.reduce((total, ability) => {
+    return total + ability.value;
+  }, 0);
+  bTotal = b.reduce((total, ability) => {
+    return total + ability.value;
+  }, 0);
+  // descending sort
+  return bTotal - aTotal;
+});
 
 /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
@@ -16,7 +32,7 @@ for (characterId in characterStats) {
 //////////////////////// Set-Up //////////////////////////////
 //////////////////////////////////////////////////////////////
 
-var margin = { top: 100, right: 100, bottom: 100, left: 100 },
+var margin = { top: 70, right: 70, bottom: 70, left: 70 },
   width = Math.min(500, window.innerWidth - 10) - margin.left - margin.right,
   height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 

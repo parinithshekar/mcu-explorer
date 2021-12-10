@@ -1,33 +1,23 @@
-characterOriginList = Object.values(CHARACTER_ID);
-moviesOriginList = Object.values(MOVIE_ID);
+characterOriginList = Object.values(characterMasterData).map((characterInfo) => characterInfo.name);
+moviesOriginList = Object.values(movieMasterData).map((movieInfo) => movieInfo.name);
 
 characterDestinationList = [CHARACTER.IRON_MAN.name, CHARACTER.THANOS.name];
 
 movieDestinationList = [MOVIE.AVENGERS_INFINITY_WAR.name, MOVIE.AVENGERS_ENDGAME.name];
 
-var characterSelect = sellect('#character-select', {
+var characterDropdown = sellect('#character-select', {
   originList: characterOriginList,
   destinationList: characterDestinationList,
-  onInsert: handleCharacterListChange,
-  onRemove: handleCharacterListChange,
+  onInsert: handleSelection,
+  onRemove: handleSelection,
 });
 
-var movieSelect = sellect('#movie-select', {
+var movieDropdown = sellect('#movie-select', {
   originList: moviesOriginList,
   destinationList: movieDestinationList,
-  onInsert: handleMovieListChange,
-  onRemove: handleMovieListChange,
+  onInsert: handleSelection,
+  onRemove: handleSelection,
 });
 
-function handleCharacterListChange(event, item) {
-  newCharacterList = characterSelect.getSelected();
-  // console.log(newCharacterList);
-}
-
-function handleMovieListChange(event, item) {
-  newMovieList = movieSelect.getSelected();
-  // console.log(newMovieList);
-}
-
-characterSelect.init();
-movieSelect.init();
+characterDropdown.init();
+movieDropdown.init();

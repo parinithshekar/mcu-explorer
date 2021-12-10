@@ -5,7 +5,7 @@ characterWordsData = [];
 
 for (movieId in characterWords) {
   for (characterId in characterWords[movieId]) {
-    entry = { character: CHARACTER_ID[characterId], movie: MOVIE_ID[movieId] };
+    entry = { character: CHARACTER[characterId].name, movie: MOVIE[movieId].name };
     entry.words = characterWords[movieId][characterId];
 
     characterWordsData.push(entry);
