@@ -1,8 +1,8 @@
 const characterMasterData = {
-  IRON_MAN: { name: 'Iron Man', nickname: 'I.Man', id: 1 },
-  CAPTAIN_AMERICA: { name: 'Captain America', nickname: 'C.America', id: 2 },
-  THOR: { name: 'Thor', nickname: 'Thor', id: 3 },
-  THANOS: { name: 'Thanos', nickname: 'Thanos', id: 4 },
+  IRON_MAN: { name: 'Iron Man', nickname: 'I.Man', id: 1, color: '#ae2012' },
+  CAPTAIN_AMERICA: { name: 'Captain America', nickname: 'C.America', id: 2, color: '#023e8a' },
+  THOR: { name: 'Thor', nickname: 'Thor', id: 3, color: '#faa307' },
+  THANOS: { name: 'Thanos', nickname: 'Thanos', id: 4, color: '#7209b7' },
 };
 const CHARACTERS = Object.values(characterMasterData).map((characterInfo) => characterInfo.name);
 

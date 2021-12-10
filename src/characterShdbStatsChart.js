@@ -1,45 +1,59 @@
-let characterStatsData = [];
+function createCharacterShdbStatsChart(selectedCharacterIds) {
+  let characterStatsData = [];
 
-for (characterId in characterStats) {
-  statsEntry = [];
-  characterAbilities = characterStats[characterId];
-  for (ability in characterAbilities) {
-    abilityEntry = {
-      axis: ability,
-      value: scaleAbilityStat(ability, characterAbilities[ability]),
-      realValue: characterAbilities[ability],
-    };
-    statsEntry.push(abilityEntry);
+  for (characterId in characterStats) {
+    if (selectedCharacterIds.includes(Number(characterId))) {
+      statsEntry = [];
+      characterAbilities = characterStats[characterId];
+      for (ability in characterAbilities) {
+        abilityEntry = {
+          axis: ability,
+          value: scaleAbilityStat(ability, characterAbilities[ability]),
+          realValue: characterAbilities[ability],
+          characterId: characterId,
+        };
+        statsEntry.push(abilityEntry);
+      }
+      characterStatsData.push(statsEntry);
+    }
   }
-  characterStatsData.push(statsEntry);
+
+  // Plot the smallest polygon at the top
+  characterStatsData.sort((a, b) => {
+    aTotal = a.reduce((total, ability) => {
+      return total + ability.value;
+    }, 0);
+    bTotal = b.reduce((total, ability) => {
+      return total + ability.value;
+    }, 0);
+    // descending sort
+    return bTotal - aTotal;
+  });
+
+  const characterColors = characterStatsData.map(
+    (characterStats) => CHARACTER[characterStats[0].characterId].color
+  );
+
+  var margin = { top: 70, right: 70, bottom: 70, left: 70 },
+    width = Math.min(500, window.innerWidth - 10) - margin.left - margin.right,
+    height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+
+  var color = d3.scaleOrdinal().range(characterColors);
+
+  var radarChartOptions = {
+    w: width,
+    h: height,
+    margin: margin,
+    maxValue: 100,
+    levels: 5,
+    roundStrokes: false,
+    color: color,
+  };
+  //Call function to draw the Radar chart
+  RadarChart('#radar-chart', characterStatsData, radarChartOptions);
 }
 
-// Plot the smallest polygon at the top
-characterStatsData.sort((a, b) => {
-  aTotal = a.reduce((total, ability) => {
-    return total + ability.value;
-  }, 0);
-  bTotal = b.reduce((total, ability) => {
-    return total + ability.value;
-  }, 0);
-  // descending sort
-  return bTotal - aTotal;
-});
-
-/* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
-
-//////////////////////////////////////////////////////////////
-//////////////////////// Set-Up //////////////////////////////
-//////////////////////////////////////////////////////////////
-
-var margin = { top: 70, right: 70, bottom: 70, left: 70 },
-  width = Math.min(500, window.innerWidth - 10) - margin.left - margin.right,
-  height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-
-//////////////////////////////////////////////////////////////
-////////////////////////// Data //////////////////////////////
-//////////////////////////////////////////////////////////////
-
+// Dummy data for reference
 var data = [
   [
     //iPhone
@@ -75,24 +89,3 @@ var data = [
     { axis: 'To Be A Smartphone', value: 0.3 },
   ],
 ];
-//////////////////////////////////////////////////////////////
-//////////////////// Draw the Chart //////////////////////////
-//////////////////////////////////////////////////////////////
-
-// v3
-// var color = d3.scale.ordinal().range(['#EDC951', '#CC333F', '#00A0B0']);
-
-//v7
-var color = d3.scaleOrdinal().range(['#EDC951', '#CC333F', '#00A0B0', '#F432A0']);
-
-var radarChartOptions = {
-  w: width,
-  h: height,
-  margin: margin,
-  maxValue: 100,
-  levels: 5,
-  roundStrokes: false,
-  color: color,
-};
-//Call function to draw the Radar chart
-RadarChart('#radar-chart', characterStatsData, radarChartOptions);

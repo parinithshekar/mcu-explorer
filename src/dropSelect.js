@@ -21,3 +21,18 @@ var movieDropdown = sellect('#movie-select', {
 
 characterDropdown.init();
 movieDropdown.init();
+
+function handleSelection(event, item) {
+  // Selection of characters and movies changed and triggered this function
+  selectedCharacterIds = characterDropdown.getSelected().map(characterName => CHARACTER[characterName].id);
+  selectedMovieIds = movieDropdown.getSelected().map(movieName => MOVIE[movieName].id);
+  updateAllCharts(selectedCharacterIds, selectedMovieIds);
+}
+
+function updateAllCharts(selectedCharacterIds, selectedMovieIds) {
+  createCharacterShdbStatsChart(selectedCharacterIds);
+  createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds);
+  createCharacterWordsChart(selectedCharacterIds, selectedMovieIds);
+}
+
+handleSelection(null, null);
