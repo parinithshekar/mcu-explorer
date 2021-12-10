@@ -25,6 +25,10 @@
   overflow-y: hidden;
 }
 
+.custom-tooltip {
+  position: absolute;
+}
+
 .sellect-container {
   margin-top: 0pt;
   margin: 5px;

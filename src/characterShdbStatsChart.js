@@ -33,6 +33,9 @@ function createCharacterShdbStatsChart(selectedCharacterIds) {
   const characterColors = characterStatsData.map(
     (characterStats) => CHARACTER[characterStats[0].characterId].color
   );
+  const characterNames = characterStatsData.map(
+    (characterStats) => CHARACTER[characterStats[0].characterId].name
+  );
 
   var margin = { top: 70, right: 70, bottom: 70, left: 70 },
     width = Math.min(500, window.innerWidth - 10) - margin.left - margin.right,
@@ -48,6 +51,7 @@ function createCharacterShdbStatsChart(selectedCharacterIds) {
     levels: 5,
     roundStrokes: false,
     color: color,
+    blobNames: characterNames
   };
   //Call function to draw the Radar chart
   RadarChart('#radar-chart', characterStatsData, radarChartOptions);
