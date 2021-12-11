@@ -25,21 +25,15 @@ links_list = [];
 // }
 
 jsonData = JSON.parse('[{"movie":"Iron Man","character":"Tony Stark / Iron Man","screentime":"77:15"},{"movie":"The Incredible Hulk","character":"Tony Stark / Iron Man","screentime":":30"},{"movie":"Iron Man 2","character":"Tony Stark / Iron Man","screentime":"61:15"},{"movie":"Thor2","character":"Thor","screentime":"43:15"},{"movie":"Marvel One-Shot: The Consultant","character":"Tony Stark / Iron Man","screentime":":30"},{"movie":"The Avengers","character":"Tony Stark / Iron Man","screentime":"31:45"},{"movie":"The Avengers","character":"Thor","screentime":"18"},{"movie":"The Avengers","character":"Thanos","screentime":":15"},{"movie":"Iron Man Three","character":"Tony Stark / Iron Man","screentime":"62:15"},{"movie":"Thor: The Dark World","character":"Thor","screentime":"35"},{"movie":"Guardians of the Galaxy","character":"Thanos","screentime":"1"},{"movie":"Avengers: Age of Ultron","character":"Tony Stark / Iron Man","screentime":"27:15"},{"movie":"Avengers: Age of Ultron","character":"Thor","screentime":"13:15"},{"movie":"Avengers: Age of Ultron","character":"Thanos","screentime":":15"},{"movie":"WHIH News Front","character":"Tony Stark / Iron Man","screentime":":30"},{"movie":"Captain America: Civil War","character":"Tony Stark / Iron Man","screentime":"37:15"},{"movie":"Doctor Strange","character":"Thor","screentime":":45"},{"movie":"Spider-Man: Homecoming","character":"Tony Stark / Iron Man","screentime":"8"},{"movie":"Thor: Ragnarok","character":"Thor","screentime":"58:45"},{"movie":"Avengers: Infinity War","character":"Thanos","screentime":"31"},{"movie":"Avengers: Infinity War","character":"Tony Stark / Iron Man","screentime":"17"},{"movie":"Avengers: Infinity War","character":"Thor","screentime":"15:15"},{"movie":"Avengers: Endgame","character":"Tony Stark / Iron Man","screentime":"34:45"},{"movie":"Avengers: Endgame","character":"Thor","screentime":"21:15"},{"movie":"Avengers: Endgame","character":"Thanos","screentime":"12:15"},{"movie":"Spider-Man: Far from Home","character":"Tony Stark / Iron Man","screentime":":30"},{"movie":"Marvel Studios: Legends","character":"Tony Stark / Iron Man","screentime":"8"},{"movie":"Marvel Studios: Legends","character":"Thanos","screentime":"2:45"},{"movie":"Loki","character":"Thor","screentime":"1:30"},{"movie":"Loki","character":"Tony Stark / Iron Man","screentime":"1"},{"movie":"Loki","character":"Thanos","screentime":":15"},{"movie":"What If...?","character":"Tony Stark / Iron Man","screentime":"9:30"},{"movie":"What If...?","character":"Thanos","screentime":"3:15"}]')
-// jsonData = JSON.parse('[{"movie": "Iron Man","character": "Iron Man", "screentime": "77:15"},{"movie": "Iron Man", "character": "Pepper Potts", "screentime": "23:15" },{"movie": "Iron Man", "character": "Obadiah Stane Iron Monger", "screentime": "22" },{"movie": "Iron Man",    "character": "Professor Ho Yinsen",    "screentime": "10:45"},{    "movie": "Iron Man",    "character": "Lt. Col. James  Rhodes",    "screentime": "8:15"},{    "movie": "Iron Man",    "character": "Raza",    "screentime": "6"},{    "movie": "Iron Man",    "character": "Agent Phil Coulson",    "screentime": "3:45"}]')
-console.log("data******"+ typeof jsonData[0]["movie"]);
+
 for (var i=0; i < jsonData.length; i++) {
     dict1 = {id:jsonData[i]["character"], value:jsonData[i]["character"]};
     dict2 = {id:jsonData[i]["movie"], value:jsonData[i]["movie"]};
     node_list.push(dict1, dict2);
     valueForLinksList = parseFloat(jsonData[i]["screentime"].replace(":","."))
     links_list.push({source:jsonData[i]["character"], target:jsonData[i]["movie"], value: valueForLinksList})
-    // console.log(jsonData[i]["screentime"]);
 }
-// nodes_list = [ {id:"Cap",value:"Cap"},{id:"Thor",value:"Thor"},{id:"IronMan",value:"IronMan"}, {id:"movie1",value:"movie 1"}, {id:"movie2",value:"movie 2"}, {id:"movie3",value:"movie 3"} ];
-// links_list = [ {source:"Cap",target:"movie1", value:77.15}, {source:"Thor",target:"movie1", value:23.15}, {source:"IronMan",target:"movie1", value:22}, {source:"Thor",target:"movie2", value:35}, {source:"Thor",target:"movie3", value:10.45} ];
 
-console.log(node_list);
-console.log(links_list);
 
   charactersAndMoviesCrownChart = SankeyChart(
       {links:links_list},
@@ -51,5 +45,5 @@ console.log(links_list);
           width,
           height: 600
       });
-  console.log("Killroy was here")
+
   document.getElementById('characters-movies-crown').appendChild(charactersAndMoviesCrownChart);

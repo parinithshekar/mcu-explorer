@@ -5,10 +5,10 @@ data_list = [
     {budget: '360000', gross_income: '800000', awards: '8'}
  ];
 
-console.log("Kilroy started the parallel");
+// console.log("Kilroy started the parallel");
 
 parallelChart = ParallelCoordv3(data_list,{});
-console.log("Kilroy saw the parallel");
-console.log(parallelChart);
+// console.log("Kilroy saw the parallel");
+// console.log(parallelChart);
 
 document.getElementById('parallel-coo-chart').appendChild(parallelChart);

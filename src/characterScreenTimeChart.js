@@ -2,30 +2,30 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
   width = 750;
 
   // TODO Need to avoid zeroes in this data before passing to chart
-  characterWordsData = [];
+  characterScreenTimeData = [];
 
-  for (movieId in characterWords) {
+  for (movieId in characterScreenTime) {
     if (selectedMovieIds.includes(Number(movieId))) {
-      for (characterId in characterWords[movieId]) {
+      for (characterId in characterScreenTime[movieId]) {
         if (selectedCharacterIds.includes(Number(characterId))) {
           entry = {};
           entry.character = CHARACTER[characterId].nickname.split(' ').join('\n');
           entry.movie = MOVIE[movieId].name;
-          entry.words = characterWords[movieId][characterId];
+          entry.words = characterScreenTime[movieId][characterId];
 
-          characterWordsData.push(entry);
+          characterScreenTimeData.push(entry);
         }
       }
     }
   }
 
-  screenTimeBarChart = StackedBarChart(characterWordsData, {
+  screenTimeBarChart = StackedBarChart(characterScreenTimeData, {
     x: (d) => d.words,
     y: (d) => d.character,
     z: (d) => d.movie,
     xLabel: 'Minutes →',
     yDomain: d3.groupSort(
-      characterWordsData,
+      characterScreenTimeData,
       (D) => d3.sum(D, (d) => d.words),
       (d) => d.character
     ), // sort y by x
@@ -34,6 +34,6 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     width,
   });
 
-  document.getElementById('character-screen-time').innerHTML = "";
+  document.getElementById('character-screen-time').innerHTML = '';
   document.getElementById('character-screen-time').appendChild(screenTimeBarChart);
 }
