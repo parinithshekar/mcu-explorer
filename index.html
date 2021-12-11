@@ -22,7 +22,7 @@
     <script src="https://unpkg.com/d3-sankey@0" defer></script>
 
     <!-- Constant IDs for characters and movies -->
-    <script src="src/constants.js" defer></script>
+    <script src="src/keys.js" defer></script>
 
     <!-- Data -->
     <script src="data/stateages.js" defer></script>
@@ -41,9 +41,10 @@
     <script src="lib/charts/orderedBarChart.js" defer></script>
     <script src="lib/charts/sankeyChart.js" defer></script>
     <script src="lib/charts/parallelV3.js" defer></script>
-    <script src="lib/charts/lineChart.js" defer></script>
+    <!-- <script src="lib/charts/lineChart.js" defer></script> -->
 
     <!-- Source -->
+    <script src="src/common.js" defer></script>
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterWordsChart.js" defer></script>
     <script src="src/characterMoviesChart.js" defer></script>
@@ -81,15 +82,23 @@
         <div class="block has-chart" id="character-words"></div>
       </div>
       
-      <!-- <div id="chart"></div> -->
-      <!-- <div id="stacked-bar"></div> -->
+      <div>
+        <p>Build sankey on
+          <input type="radio" name="sankeyParam" id="screenTime" value="screenTime" onchange="handleSankeySelection(this)" checked>
+          <label for="screenTime">Screen Time</label>
+          <input type="radio" name="sankeyParam" id="wordsSpoken" value="wordsSpoken" onchange="handleSankeySelection(this)">
+          <label for="wordsSpoken">Words Spoken</label>
+        </p>
+      </div>
+      <div class="row">
+          <div id="characters-movies-crown"></div>
+      </div>
+      
       <div id="sortable-bar"></div>
-
-      <div id="characters-movies-crown"></div>
-
+      
       <div id = "parallel-coo-chart"></div>
 
-      <div id="income-movies"></div>
+      <!-- <div id="income-movies"></div> -->
 
     </div>
   </body>

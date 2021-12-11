@@ -11,7 +11,11 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
           entry = {};
           entry.character = CHARACTER[characterId].nickname.split(' ').join('\n');
           entry.movie = MOVIE[movieId].name;
-          entry.words = characterWords[movieId][characterId];
+          if (characterId in characterWords[movieId]) {
+            entry.words = characterWords[movieId][characterId];
+          } else {
+            continue;
+          }
 
           characterWordsData.push(entry);
         }

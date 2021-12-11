@@ -30,6 +30,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
       (d) => d.character
     ), // sort y by x
     zDomain: MOVIES,
+    xFormat: '0.1s',
     colors: d3.schemeSpectral[MOVIES.length],
     width,
   });
