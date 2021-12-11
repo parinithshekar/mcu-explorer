@@ -163,15 +163,6 @@ const characterStats = {
     Combat: 70,
     Tier: 4,
   },
-  [CHARACTER.MYSTERIO.id]: {
-    Intelligence: 70,
-    Strength: 6,
-    Speed: 7,
-    Durability: 12,
-    Power: 18,
-    Combat: 35,
-    Tier: 1,
-  },
   [CHARACTER.GROOT.id]: {
     Intelligence: 40,
     Strength: 35,
