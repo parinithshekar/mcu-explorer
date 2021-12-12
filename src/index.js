@@ -51,12 +51,31 @@ function handleSankeySelection(radio) {
   createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, radio.value);
 }
 
+function handleBarChartSelection() {
+  const barYSelect = document.getElementById('barY');
+  const barY = barYSelect.options[barYSelect.selectedIndex].value;
+
+  const barSortSelect = document.getElementById('barSort');
+  const barSort = barSortSelect.options[barSortSelect.selectedIndex].value;
+
+  const barOrderSelect = document.getElementById('barOrder');
+  const barOrder = barOrderSelect.options[barOrderSelect.selectedIndex].value;
+
+  const selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
+
+  createOrderedMovieStatsChart(selectedMovieIds, barY, barSort, barOrder);
+}
+
 function updateAllCharts(selectedCharacterIds, selectedMovieIds) {
   createCharacterShdbStatsChart(selectedCharacterIds);
   createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds);
   createCharacterWordsChart(selectedCharacterIds, selectedMovieIds);
-  createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, 'screenTime');
-  createOrderedMovieStatsChart(selectedMovieIds, 'gross', 'descending');
+
+  const sankeyParam = document.querySelector('input[name="sankeyParam"]:checked').value;
+  createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParam);
+
+  // createOrderedMovieStatsChart(selectedMovieIds, 'gross', 'descending');
+  handleBarChartSelection();
 }
 
 handleSelection(null, null);

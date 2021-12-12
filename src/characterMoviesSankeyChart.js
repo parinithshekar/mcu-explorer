@@ -15,15 +15,21 @@ function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds,
     });
   });
   selectedMovieIds.map((movieId) => {
-    nodeList.push({
-      id: String(MOVIE[movieId].id),
-      label: MOVIE[movieId].name,
-    });
+    if (dataSource[movieId]) {
+      nodeList.push({
+        id: String(MOVIE[movieId].id),
+        label: MOVIE[movieId].name,
+      });
+    }
   });
 
   // Prepare links
   for (movieId of selectedMovieIds) {
     const characterTimes = dataSource[movieId];
+    // Some movies not present in 
+    if (!characterTimes) {
+      continue;
+    }
     for (characterId of selectedCharacterIds) {
       if (characterId in characterTimes) {
         linksList.push({

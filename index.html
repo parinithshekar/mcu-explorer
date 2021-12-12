@@ -93,6 +93,33 @@
           <div id="characters-movies-crown"></div>
       </div>
 
+      <div>
+        <h2>Movie statistics</h2>
+        <p>
+          <label for="barY">Y axis: </label>
+          <select name="barY" id="barY" onchange="handleBarChartSelection()">
+            <option value="budget" selected>Budget</option>
+            <option value="gross">Gross Revenue</option>
+            <option value="nominations">Nominations</option>
+            <option value="awards">Awards</option>
+          </select>
+
+          <label for="barSort">Sort by: </label>
+          <select name="barSort" id="barSort" onchange="handleBarChartSelection()">
+            <option value="budget">Budget</option>
+            <option value="gross">Gross Revenue</option>
+            <option value="nominations">Nominations</option>
+            <option value="awards">Awards</option>
+            <option value="year" selected>Year</option>
+          </select>
+
+          <label for="barOrder">Sort order: </label>
+          <select name="barOrder" id="barOrder" onchange="handleBarChartSelection()">
+            <option value="descending" selected>Descending</option>
+            <option value="ascending">Ascending</option>
+          </select>
+        </p>
+      </div>
       <div class="row">
         <div id="sortable-bar"></div>
       </div>
