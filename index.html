@@ -30,6 +30,7 @@
     <script src="data/characterWords.js" defer></script>
     <script src="data/characterStats.js" defer></script>
     <script src="data/characterScreenTime.js" defer></script>
+    <script src="data/movieStats.js" defer></script>
 
     <!-- Libraries -->
     <script src="lib/sellect/sellect.js" defer></script>
@@ -47,20 +48,18 @@
     <script src="src/common.js" defer></script>
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterWordsChart.js" defer></script>
-    <script src="src/characterMoviesChart.js" defer></script>
+    <script src="src/characterMoviesSankeyChart.js" defer></script>
     <script src="src/awardBudgetGrossChart.js" defer></script>
-    <!-- <script src="src/characterShdbStatsBarChart.js" defer></script> -->
     <script src="src/characterShdbStatsChart.js" defer></script>
-    <script src="src/incomePerMovieChart.js" defer></script>
-    <script src="src/movieRevenueChart.js" defer></script>
-    <script src="src/updateCharts.js" defer></script>
-    <script src="src/dropSelect.js" defer></script>
+    <!-- <script src="src/incomePerMovieChart.js" defer></script> -->
+    <script src="src/movieStatsChart.js" defer></script>
+    <script src="src/index.js" defer></script>
     <title>MCU DataVis</title>
   </head>
   <body>
     <div class="main-container" id="root">
 
-      <h1>Marvel Cinetmatic Universe Explorer</h1>
+      <h1>Marvel Cinematic Universe Explorer</h1>
 
       <div class="row">
         <div class="block" id="inputs">
@@ -93,8 +92,11 @@
       <div class="row">
           <div id="characters-movies-crown"></div>
       </div>
+
+      <div class="row">
+        <div id="sortable-bar"></div>
+      </div>
       
-      <div id="sortable-bar"></div>
       
       <div id = "parallel-coo-chart"></div>
 

@@ -56,6 +56,7 @@ function updateAllCharts(selectedCharacterIds, selectedMovieIds) {
   createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds);
   createCharacterWordsChart(selectedCharacterIds, selectedMovieIds);
   createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, 'screenTime');
+  createOrderedMovieStatsChart(selectedMovieIds, 'gross', 'descending');
 }
 
 handleSelection(null, null);
