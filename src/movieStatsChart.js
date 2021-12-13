@@ -24,6 +24,7 @@ function createOrderedMovieStatsChart(selectedMovieIds, yStat, sortStat, sortOrd
     }
   });
 
+  const customColors = movieStatsData.map(({ id }) => colorForId(id));
   orderedChart = BarChart(movieStatsData, {
     x: (d) => d.nickname,
     y: (d) => d[yStat],
@@ -32,6 +33,7 @@ function createOrderedMovieStatsChart(selectedMovieIds, yStat, sortStat, sortOrd
     width,
     height: 400,
     color: 'steelblue',
+    customColors,
     duration: 750, // slow transition for demonstration
   });
 

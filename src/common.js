@@ -20,3 +20,8 @@ function formatStats(money) {
     return money;
   }
 }
+
+function colorForId(id) {
+  nid = Number(id);
+  return (nid>900) ? MOVIE[nid].color : CHARACTER[nid].color;
+}

@@ -24,6 +24,10 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     }
   }
 
+  const selectedMovieNames = selectedMovieIds.map((movieId) => MOVIE[movieId].name);
+  let colorMapping = {};
+  selectedMovieIds.map((movieId) => (colorMapping[MOVIE[movieId].name] = MOVIE[movieId].color));
+
   screenTimeBarChart = StackedBarChart(characterWordsData, {
     x: (d) => d.words,
     y: (d) => d.character,
@@ -36,6 +40,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     ), // sort y by x
     zDomain: MOVIES,
     colors: d3.schemeSpectral[MOVIES.length],
+    colorMapping,
     width,
     height,
   });
