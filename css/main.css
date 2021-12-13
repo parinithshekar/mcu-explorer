@@ -22,8 +22,12 @@
   padding: 2px;
   margin: 2px;
   height: calc(50% - 2px - 4px - 4px);
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
+
+/* #character-screen-time, #character-words {
+  height: 45vh;
+} */
 
 .custom-tooltip {
   position: absolute;

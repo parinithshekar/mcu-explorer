@@ -7,16 +7,20 @@ function createOrderedMovieStatsChart(selectedMovieIds, yStat, sortStat, sortOrd
       ...movieStats[movieId],
       id: movieId,
       name: MOVIE[movieId].name,
-      nickname: MOVIE[movieId].nickname
+      nickname: MOVIE[movieId].nickname,
     };
     movieStatsData.push(movieEntry);
   }
 
   movieStatsData.sort((a, b) => {
     if (sortOrder.toLowerCase() === 'ascending') {
-      return d3.ascending(a[sortStat], b[sortStat]);
+      return a[sortStat] == b[sortStat]
+        ? d3.ascending(a.id, b.id)
+        : d3.ascending(a[sortStat], b[sortStat]);
     } else {
-      return d3.descending(a[sortStat], b[sortStat]);
+      return a[sortStat] == b[sortStat]
+        ? d3.descending(a.id, b.id)
+        : d3.descending(a[sortStat], b[sortStat]);
     }
   });
 
@@ -42,6 +46,6 @@ function updateOrderedMovieStatsChart(selectedMovieIds, sortStat, sortOrder) {
 
 function optimizeTitle(title) {
   let subtitles = title.split(':');
-  subtitles = subtitles.map(sub => sub.trim())
+  subtitles = subtitles.map((sub) => sub.trim());
   return subtitles.join('\n');
 }

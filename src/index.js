@@ -1,13 +1,16 @@
 characterOriginList = Object.values(characterMasterData).map((characterInfo) => characterInfo.name);
 moviesOriginList = Object.values(movieMasterData).map((movieInfo) => movieInfo.name);
 
+// All
+// characterDestinationList = Object.values(characterMasterData).map((character) => character.name);
+// movieDestinationList = Object.values(movieMasterData).map((movie) => movie.name);
+
 characterDestinationList = [
   CHARACTER.IRON_MAN.name,
   CHARACTER.THANOS.name,
   CHARACTER.CAPTAIN_AMERICA.name,
   CHARACTER.THOR.name,
 ];
-
 movieDestinationList = [
   MOVIE.AVENGERS_INFINITY_WAR.name,
   MOVIE.AVENGERS_ENDGAME.name,

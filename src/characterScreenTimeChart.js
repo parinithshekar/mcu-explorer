@@ -1,5 +1,6 @@
 function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds) {
   width = 750;
+  height = 650;
 
   // TODO Need to avoid zeroes in this data before passing to chart
   characterScreenTimeData = [];
@@ -33,6 +34,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     xFormat: '0.1s',
     colors: d3.schemeSpectral[MOVIES.length],
     width,
+    height,
   });
 
   document.getElementById('character-screen-time').innerHTML = '';

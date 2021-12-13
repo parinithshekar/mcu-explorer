@@ -1,5 +1,6 @@
 function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
   width = 750;
+  height = 650;
 
   // TODO Need to avoid zeroes in this data before passing to chart
   characterWordsData = [];
@@ -36,6 +37,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     zDomain: MOVIES,
     colors: d3.schemeSpectral[MOVIES.length],
     width,
+    height,
   });
 
   // update chart in div

@@ -7,26 +7,10 @@ function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds,
   nodeList = [];
   linksList = [];
 
-  // Prepare nodes
-  selectedCharacterIds.map((characterId) => {
-    nodeList.push({
-      id: String(CHARACTER[characterId].id),
-      label: CHARACTER[characterId].name,
-    });
-  });
-  selectedMovieIds.map((movieId) => {
-    if (dataSource[movieId]) {
-      nodeList.push({
-        id: String(MOVIE[movieId].id),
-        label: MOVIE[movieId].name,
-      });
-    }
-  });
-
   // Prepare links
   for (movieId of selectedMovieIds) {
     const characterTimes = dataSource[movieId];
-    // Some movies not present in 
+    // Some movies not present in
     if (!characterTimes) {
       continue;
     }
@@ -40,6 +24,24 @@ function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds,
       }
     }
   }
+
+  // Prepare nodes
+  sankeyCharacterIds = [ ...new Set(linksList.map(link => link.source)) ]
+  sankeyMovieIds = [ ...new Set(linksList.map(link => link.target)) ]
+  sankeyCharacterIds.map((characterId) => {
+    nodeList.push({
+      id: String(CHARACTER[characterId].id),
+      label: CHARACTER[characterId].name,
+    });
+  });
+  sankeyMovieIds.map((movieId) => {
+    if (dataSource[movieId]) {
+      nodeList.push({
+        id: String(MOVIE[movieId].id),
+        label: MOVIE[movieId].name,
+      });
+    }
+  });
 
   charactersAndMoviesCrownChart = SankeyChart(
     { links: linksList, nodes: nodeList },
