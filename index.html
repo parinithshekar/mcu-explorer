@@ -31,6 +31,7 @@
     <script src="data/characterStats.js" defer></script>
     <script src="data/characterScreenTime.js" defer></script>
     <script src="data/movieStats.js" defer></script>
+    <script src="data/sepalData.js"></script>
 
     <!-- Libraries -->
     <script src="lib/sellect/sellect.js" defer></script>
@@ -42,6 +43,7 @@
     <script src="lib/charts/orderedBarChart.js" defer></script>
     <script src="lib/charts/sankeyChart.js" defer></script>
     <script src="lib/charts/parallelV3.js" defer></script>
+    <script src="lib/charts/parallelCoordinateChart.js" defer></script>
     <!-- <script src="lib/charts/lineChart.js" defer></script> -->
 
     <!-- Source -->
@@ -49,9 +51,8 @@
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterWordsChart.js" defer></script>
     <script src="src/characterMoviesSankeyChart.js" defer></script>
-    <script src="src/awardBudgetGrossChart.js" defer></script>
     <script src="src/characterShdbStatsChart.js" defer></script>
-    <!-- <script src="src/incomePerMovieChart.js" defer></script> -->
+    <script src="src/movieStatsPcChart.js" defer></script>
     <script src="src/movieStatsChart.js" defer></script>
     <script src="src/index.js" defer></script>
     <title>MCU Explorer</title>
@@ -98,8 +99,8 @@
         <p>
           <label for="barY">Y axis: </label>
           <select name="barY" id="barY" onchange="handleBarChartSelection()">
-            <option value="budget" selected>Budget</option>
-            <option value="gross">Gross Revenue</option>
+            <option value="budget">Budget</option>
+            <option value="gross" selected>Gross Revenue</option>
             <option value="nominations">Nominations</option>
             <option value="awards">Awards</option>
           </select>
@@ -115,8 +116,8 @@
 
           <label for="barOrder">Sort order: </label>
           <select name="barOrder" id="barOrder" onchange="handleBarChartSelection()">
-            <option value="descending" selected>Descending</option>
-            <option value="ascending">Ascending</option>
+            <option value="descending">Descending</option>
+            <option value="ascending" selected>Ascending</option>
           </select>
         </p>
       </div>
@@ -124,10 +125,9 @@
         <div id="sortable-bar"></div>
       </div>
       
-      
-      <div id = "parallel-coo-chart"></div>
-
-      <!-- <div id="income-movies"></div> -->
+      <div class="row">
+        <div id = "parallel-coo-chart"></div>
+      </div>
 
     </div>
   </body>

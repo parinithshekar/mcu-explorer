@@ -10,12 +10,14 @@ characterDestinationList = [
   CHARACTER.THANOS.name,
   CHARACTER.CAPTAIN_AMERICA.name,
   CHARACTER.THOR.name,
+  CHARACTER.BLACK_PANTHER.name,
 ];
 movieDestinationList = [
   MOVIE.AVENGERS_INFINITY_WAR.name,
   MOVIE.AVENGERS_ENDGAME.name,
   MOVIE.THOR.name,
   MOVIE.CAPTAIN_AMERICA_FIRST_AVENGER.name,
+  MOVIE.BLACK_PANTHER.name,
 ];
 
 var characterDropdown = sellect('#character-select', {
@@ -79,6 +81,8 @@ function updateAllCharts(selectedCharacterIds, selectedMovieIds) {
 
   // createOrderedMovieStatsChart(selectedMovieIds, 'gross', 'descending');
   handleBarChartSelection();
+
+  createParallelCoordinateChart(selectedMovieIds);
 }
 
 handleSelection(null, null);
