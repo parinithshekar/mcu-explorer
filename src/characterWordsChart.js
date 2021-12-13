@@ -9,7 +9,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     if (selectedMovieIds.includes(Number(movieId))) {
       for (characterId in characterWords[movieId]) {
         if (selectedCharacterIds.includes(Number(characterId))) {
-          entry = {};
+          entry = { movieId };
           entry.character = CHARACTER[characterId].nickname.split(' ').join('\n');
           entry.movie = MOVIE[movieId].name;
           if (characterId in characterWords[movieId]) {

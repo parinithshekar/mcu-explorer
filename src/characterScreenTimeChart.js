@@ -9,7 +9,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     if (selectedMovieIds.includes(Number(movieId))) {
       for (characterId in characterScreenTime[movieId]) {
         if (selectedCharacterIds.includes(Number(characterId))) {
-          entry = {};
+          entry = { movieId };
           entry.character = CHARACTER[characterId].nickname.split(' ').join('\n');
           entry.movie = MOVIE[movieId].name;
           entry.words = characterScreenTime[movieId][characterId];
@@ -23,7 +23,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
   const selectedMovieNames = selectedMovieIds.map((movieId) => MOVIE[movieId].name);
   let colorMapping = {};
   selectedMovieIds.map((movieId) => (colorMapping[MOVIE[movieId].name] = MOVIE[movieId].color));
-  
+
   // const colors = d3.schemeSpectral[selectedMovieIds.length];
 
   screenTimeBarChart = StackedBarChart(characterScreenTimeData, {
