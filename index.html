@@ -79,26 +79,47 @@
             </div>
           </div>
         </div>
-        <div class="block has-chart" id="radar-chart"></div>
+        <div class="block">
+          <h2>Ability statistics</h2>
+          <div class="block has-chart" id="radar-chart"></div>
+          <p class="fineprint">* Each axis individually scaled to chart proportions</p>
+        </div>
       </div>
 
       <div class="row">
-        <div class="block has-chart" id="character-screen-time"></div>
-        <div class="block has-chart" id="character-words"></div>
+        <div class="block">
+          <h2>Time on screen</h2>
+          <div class="block has-chart" id="character-screen-time"></div>
+        </div>
+        <div class="block">
+          <h2>Length of dialogues</h2>
+          <div class="block has-chart" id="character-words"></div>
+        </div>
       </div>
-      
+      <br>
+      <br>
       <div>
-        <p>Build sankey on
+        <h2>Character-Movie weighted association</h2>
+        <p>Sankey links weight : 
           <input type="radio" name="sankeyParam" id="screenTime" value="screenTime" onchange="handleSankeySelection(this)" checked>
           <label for="screenTime">Screen Time</label>
           <input type="radio" name="sankeyParam" id="wordsSpoken" value="wordsSpoken" onchange="handleSankeySelection(this)">
           <label for="wordsSpoken">Words Spoken</label>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <label for="sankeyColor">Color scheme: </label>
+          <select name="sankeyColor" id="sankeyColor" onchange="handleSankeyColorSelection()">
+            <option value="source" selected>source</option>
+            <option value="target">target</option>
+            <option value="source-target">source-target</option>
+          </select>
         </p>
       </div>
-      <div class="row">
+      <div class="row centered">
+          <h3>CHARACTERS</h3>
           <div id="characters-movies-crown"></div>
+          <h3>MOVIES</h3>
       </div>
-
+      <hr>
       <div>
         <h2>Movie statistics</h2>
         <p>

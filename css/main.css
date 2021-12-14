@@ -7,9 +7,19 @@
 .row {
   display: flex;
   align-content: center;
+  /* align-items: center; */
   justify-content: space-evenly;
   margin: 0.5rem 0 0.5rem 0;
   /* height: 45vh; */
+}
+
+.fineprint {
+  text-align: right;
+  font-size: 0.7rem;
+}
+
+.centered {
+  align-items: center;
 }
 
 .selections {

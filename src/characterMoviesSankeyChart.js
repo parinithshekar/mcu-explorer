@@ -1,4 +1,9 @@
-function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParameter) {
+function createCharacterMovieSankeyChart(
+  selectedCharacterIds,
+  selectedMovieIds,
+  sankeyParameter,
+  sankeyColor
+) {
   if (!selectedCharacterIds.length || !selectedMovieIds.length) {
     const emptyMessage = d3
       .create('h3')
@@ -58,7 +63,7 @@ function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds,
     {
       nodeGroup: (d) => d.id.split(/\W/)[0],
       nodeAlign: 'justify',
-      linkColor: 'source-target',
+      linkColor: sankeyColor,
       format: (
         (f) => (d) =>
           `${f(d)} ${unit}`

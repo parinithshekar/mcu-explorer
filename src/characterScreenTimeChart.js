@@ -13,6 +13,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
           entry.character = CHARACTER[characterId].nickname.split(' ').join('\n');
           entry.movie = MOVIE[movieId].name;
           entry.words = characterScreenTime[movieId][characterId];
+          entry.characterFullName = CHARACTER[characterId].name;
 
           characterScreenTimeData.push(entry);
         }
@@ -39,6 +40,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     x: (d) => d.words,
     y: (d) => d.character,
     z: (d) => d.movie,
+    l: (d) => d.characterFullName,
     xLabel: 'Minutes →',
     yDomain: d3.groupSort(
       characterScreenTimeData,

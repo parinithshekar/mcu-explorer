@@ -1,6 +1,9 @@
 function createCharacterShdbStatsChart(selectedCharacterIds) {
   if (!selectedCharacterIds.length) {
-    const emptyMessage = d3.create('h3').style('white-space', 'pre-line').text('Select heores to visualize stats');
+    const emptyMessage = d3
+      .create('h3')
+      .style('white-space', 'pre-line')
+      .text('Select heores to visualize stats');
     document.getElementById('radar-chart').innerHTML = '';
     document.getElementById('radar-chart').appendChild(emptyMessage.node());
     return;
@@ -61,6 +64,7 @@ function createCharacterShdbStatsChart(selectedCharacterIds) {
     blobNames: characterNames,
   };
   //Call function to draw the Radar chart
+  document.getElementById('radar-chart').innerHTML = '';
   RadarChart('#radar-chart', characterStatsData, radarChartOptions);
 }
 

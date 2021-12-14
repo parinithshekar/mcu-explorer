@@ -71,13 +71,31 @@ function handleBarChartSelection() {
   createOrderedMovieStatsChart(selectedMovieIds, barY, barSort, barOrder);
 }
 
+function handleSankeyColorSelection() {
+  // Selection of characters and movies changed and triggered this function
+  selectedCharacterIds = characterDropdown
+    .getSelected()
+    .map((characterName) => CHARACTER[characterName].id);
+  selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
+
+  // Get Sankey parameters
+  const sankeyParam = document.querySelector('input[name="sankeyParam"]:checked').value;
+  const sankeyColorSelect = document.getElementById('sankeyColor');
+  const sankeyColor = sankeyColorSelect.options[sankeyColorSelect.selectedIndex].value;
+
+  // Create sankey chart
+  createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParam, sankeyColor);
+}
+
 function updateAllCharts(selectedCharacterIds, selectedMovieIds) {
   createCharacterShdbStatsChart(selectedCharacterIds);
   createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds);
   createCharacterWordsChart(selectedCharacterIds, selectedMovieIds);
 
   const sankeyParam = document.querySelector('input[name="sankeyParam"]:checked').value;
-  createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParam);
+  const sankeyColorSelect = document.getElementById('sankeyColor');
+  const sankeyColor = sankeyColorSelect.options[sankeyColorSelect.selectedIndex].value;
+  createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParam, sankeyColor);
 
   // createOrderedMovieStatsChart(selectedMovieIds, 'gross', 'descending');
   handleBarChartSelection();

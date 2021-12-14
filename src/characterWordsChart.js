@@ -12,6 +12,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
           entry = { movieId };
           entry.character = CHARACTER[characterId].nickname.split(' ').join('\n');
           entry.movie = MOVIE[movieId].name;
+          entry.characterFullName = CHARACTER[characterId].name;
           if (characterId in characterWords[movieId]) {
             entry.words = characterWords[movieId][characterId];
           } else {
@@ -43,6 +44,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     x: (d) => d.words,
     y: (d) => d.character,
     z: (d) => d.movie,
+    l: (d) => d.characterFullName,
     xLabel: 'Words →',
     yDomain: d3.groupSort(
       characterWordsData,
