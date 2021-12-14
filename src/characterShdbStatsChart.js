@@ -1,4 +1,11 @@
 function createCharacterShdbStatsChart(selectedCharacterIds) {
+  if (!selectedCharacterIds.length) {
+    const emptyMessage = d3.create('h3').style('white-space', 'pre-line').text('Select heores to visualize stats');
+    document.getElementById('radar-chart').innerHTML = '';
+    document.getElementById('radar-chart').appendChild(emptyMessage.node());
+    return;
+  }
+
   let characterStatsData = [];
 
   for (characterId in characterStats) {
@@ -51,7 +58,7 @@ function createCharacterShdbStatsChart(selectedCharacterIds) {
     levels: 5,
     roundStrokes: false,
     color: color,
-    blobNames: characterNames
+    blobNames: characterNames,
   };
   //Call function to draw the Radar chart
   RadarChart('#radar-chart', characterStatsData, radarChartOptions);

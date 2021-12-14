@@ -20,11 +20,20 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     }
   }
 
-  const selectedMovieNames = selectedMovieIds.map((movieId) => MOVIE[movieId].name);
+  if (!characterScreenTimeData.length) {
+    const emptyMessage = d3
+      .create('h3')
+      .style('white-space', 'pre-line')
+      .text(
+        'No screen time data on selected characters and movies\nSelect some characters and movies!'
+      );
+    document.getElementById('character-screen-time').innerHTML = '';
+    document.getElementById('character-screen-time').appendChild(emptyMessage.node());
+    return;
+  }
+
   let colorMapping = {};
   selectedMovieIds.map((movieId) => (colorMapping[MOVIE[movieId].name] = MOVIE[movieId].color));
-
-  // const colors = d3.schemeSpectral[selectedMovieIds.length];
 
   screenTimeBarChart = StackedBarChart(characterScreenTimeData, {
     x: (d) => d.words,
@@ -36,10 +45,9 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
       (D) => d3.sum(D, (d) => d.words),
       (d) => d.character
     ), // sort y by x
-    zDomain: selectedMovieNames,
+    zDomain: MOVIES,
     xFormat: '0.1s',
-    // colors: d3.schemeSpectral[selectedMovieIds.length],
-    // colors: c,
+    colors: d3.schemeSpectral[MOVIES.length],
     colorMapping,
     width,
     height,

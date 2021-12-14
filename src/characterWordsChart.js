@@ -24,9 +24,20 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     }
   }
 
-  const selectedMovieNames = selectedMovieIds.map((movieId) => MOVIE[movieId].name);
   let colorMapping = {};
   selectedMovieIds.map((movieId) => (colorMapping[MOVIE[movieId].name] = MOVIE[movieId].color));
+
+  if (!characterWordsData.length) {
+    const emptyMessage = d3
+      .create('h3')
+      .style('white-space', 'pre-line')
+      .text(
+        'No dialogues data on selected characters and movies\nSelect some characters and movies!'
+      );
+    document.getElementById('character-words').innerHTML = '';
+    document.getElementById('character-words').appendChild(emptyMessage.node());
+    return;
+  }
 
   screenTimeBarChart = StackedBarChart(characterWordsData, {
     x: (d) => d.words,

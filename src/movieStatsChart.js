@@ -1,4 +1,14 @@
 function createOrderedMovieStatsChart(selectedMovieIds, yStat, sortStat, sortOrder) {
+  if (!selectedMovieIds.length) {
+    const emptyMessage = d3
+      .create('h3')
+      .style('white-space', 'pre-line')
+      .text('Select some movies to compare their stats!');
+    document.getElementById('sortable-bar').innerHTML = '';
+    document.getElementById('sortable-bar').appendChild(emptyMessage.node());
+    return;
+  }
+
   width = 1200;
 
   let movieStatsData = [];

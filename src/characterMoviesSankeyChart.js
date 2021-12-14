@@ -1,4 +1,14 @@
 function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParameter) {
+  if (!selectedCharacterIds.length || !selectedMovieIds.length) {
+    const emptyMessage = d3
+      .create('h3')
+      .style('white-space', 'pre-line')
+      .text('Select some characters and movies to build the sankey chart!');
+    document.getElementById('characters-movies-crown').innerHTML = '';
+    document.getElementById('characters-movies-crown').appendChild(emptyMessage.node());
+    return;
+  }
+
   width = 1600;
 
   const dataSource = sankeyParameter === 'screenTime' ? characterScreenTime : characterWords;
@@ -26,8 +36,8 @@ function createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds,
   }
 
   // Prepare nodes
-  sankeyCharacterIds = [ ...new Set(linksList.map(link => link.source)) ]
-  sankeyMovieIds = [ ...new Set(linksList.map(link => link.target)) ]
+  sankeyCharacterIds = [...new Set(linksList.map((link) => link.source))];
+  sankeyMovieIds = [...new Set(linksList.map((link) => link.target))];
   sankeyCharacterIds.map((characterId) => {
     nodeList.push({
       id: String(CHARACTER[characterId].id),
