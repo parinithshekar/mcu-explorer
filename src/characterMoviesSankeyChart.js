@@ -4,6 +4,7 @@ function createCharacterMovieSankeyChart(
   sankeyParameter,
   sankeyColor
 ) {
+  // Nothing selected
   if (!selectedCharacterIds.length || !selectedMovieIds.length) {
     const emptyMessage = d3
       .create('h3')
@@ -25,7 +26,7 @@ function createCharacterMovieSankeyChart(
   // Prepare links
   for (movieId of selectedMovieIds) {
     const characterTimes = dataSource[movieId];
-    // Some movies not present in
+    // Some movies not present in data source
     if (!characterTimes) {
       continue;
     }
@@ -58,6 +59,7 @@ function createCharacterMovieSankeyChart(
     }
   });
 
+  // Build chart
   charactersAndMoviesCrownChart = SankeyChart(
     { links: linksList, nodes: nodeList },
     {
@@ -73,6 +75,7 @@ function createCharacterMovieSankeyChart(
     }
   );
 
+  // Populate it in DOM
   document.getElementById('characters-movies-crown').innerHTML = '';
   document.getElementById('characters-movies-crown').appendChild(charactersAndMoviesCrownChart);
 }

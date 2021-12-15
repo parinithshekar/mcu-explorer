@@ -2,9 +2,8 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
   width = 750;
   height = 650;
 
-  // TODO Need to avoid zeroes in this data before passing to chart
   characterScreenTimeData = [];
-
+  // Parse and prepare data for chart
   for (movieId in characterScreenTime) {
     if (selectedMovieIds.includes(Number(movieId))) {
       for (characterId in characterScreenTime[movieId]) {
@@ -21,6 +20,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     }
   }
 
+  // No data on selected characters to show
   if (!characterScreenTimeData.length) {
     const emptyMessage = d3
       .create('h3')
@@ -33,9 +33,11 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     return;
   }
 
+  // Create custom color mapping
   let colorMapping = {};
   selectedMovieIds.map((movieId) => (colorMapping[MOVIE[movieId].name] = MOVIE[movieId].color));
 
+  // Build chart
   screenTimeBarChart = StackedBarChart(characterScreenTimeData, {
     x: (d) => d.words,
     y: (d) => d.character,
@@ -55,6 +57,7 @@ function createCharactersScreenTimeChart(selectedCharacterIds, selectedMovieIds)
     height,
   });
 
+  // Populate it in DOM
   document.getElementById('character-screen-time').innerHTML = '';
   document.getElementById('character-screen-time').appendChild(screenTimeBarChart);
 }

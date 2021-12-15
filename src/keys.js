@@ -90,7 +90,12 @@ const movieMasterData = {
     id: 919,
     color: '#3490DE',
   },
-  ANT_MAN_AND_THE_WASP: { name: 'Ant-Man and the Wasp', nickname: 'AM:W', id: 920, color: '#6C5B7B' },
+  ANT_MAN_AND_THE_WASP: {
+    name: 'Ant-Man and the Wasp',
+    nickname: 'AM:W',
+    id: 920,
+    color: '#6C5B7B',
+  },
   CAPTAIN_MARVEL: { name: 'Captain Marvel', nickname: 'CM', id: 921, color: '#424874' },
   AVENGERS_ENDGAME: { name: 'Avengers: Endgame', nickname: 'AV:E', id: 922, color: '#FFC93C' },
   SPIDER_MAN_FAR_FROM_HOME: {

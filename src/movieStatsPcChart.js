@@ -1,4 +1,5 @@
 function createParallelCoordinateChart(selectedMovieIds) {
+  // Nothing selected
   if (!selectedMovieIds.length) {
     const emptyMessage = d3
       .create('h3')
@@ -9,6 +10,7 @@ function createParallelCoordinateChart(selectedMovieIds) {
     return;
   }
 
+  // Parse and prepare data for chart
   movieStatsData = selectedMovieIds.map((movieId) => {
     return {
       ...movieStats[movieId],
@@ -28,14 +30,17 @@ function createParallelCoordinateChart(selectedMovieIds) {
           d3.min(Object.values(movieStats), (d) => +d[movieStat]),
       ])
   );
+  // Set awards and nominations to have same scale
   statsDomain['awards'] = statsDomain['nominations'];
 
+  // Build chart
   const movieStatsPcChart = ParallelCoordinateChart(movieStatsData, statsDomain, [
     'id',
     'name',
     'year',
   ]);
 
+  // Populate it in DOM
   document.getElementById('parallel-coo-chart').innerHTML = '';
   document.getElementById('parallel-coo-chart').appendChild(movieStatsPcChart);
 }

@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="css/sellect.css" />
     <link rel="stylesheet" href="css/main.css" />
 
-
     <!-- D3 -->
     <script src="https://d3js.org/d3.v7.min.js" defer></script>
     <script src="https://unpkg.com/d3-sankey@0" defer></script>
@@ -38,13 +37,10 @@
     <script src="src/keys.js" defer></script>
 
     <!-- Data -->
-    <script src="data/stateages.js" defer></script>
-    <script src="data/alphabet.js" defer></script>
     <script src="data/characterWords.js" defer></script>
     <script src="data/characterStats.js" defer></script>
     <script src="data/characterScreenTime.js" defer></script>
     <script src="data/movieStats.js" defer></script>
-    <script src="data/sepalData.js"></script>
 
     <!-- Libraries -->
     <script src="lib/sellect/sellect.js" defer></script>
@@ -59,7 +55,7 @@
     <!-- <script src="lib/charts/lineChart.js" defer></script> -->
 
     <!-- Source -->
-    <script src="src/common.js" defer></script>
+    <script src="src/utils.js" defer></script>
     <script src="src/characterScreenTimeChart.js" defer></script>
     <script src="src/characterWordsChart.js" defer></script>
     <script src="src/characterMoviesSankeyChart.js" defer></script>
@@ -129,6 +125,14 @@
       <hr>
       <div>
         <h2>Movie statistics</h2>
+
+        <div class="row">
+          <div id = "parallel-coo-chart"></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
         <p>
           <label for="barY">Y axis: </label>
           <select name="barY" id="barY" onchange="handleBarChartSelection()">
@@ -156,10 +160,6 @@
       </div>
       <div class="row">
         <div id="sortable-bar"></div>
-      </div>
-      
-      <div class="row">
-        <div id = "parallel-coo-chart"></div>
       </div>
 
     </div>

@@ -2,9 +2,9 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
   width = 750;
   height = 650;
 
-  // TODO Need to avoid zeroes in this data before passing to chart
   characterWordsData = [];
 
+  // Parse and prepare data for chart
   for (movieId in characterWords) {
     if (selectedMovieIds.includes(Number(movieId))) {
       for (characterId in characterWords[movieId]) {
@@ -18,16 +18,17 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
           } else {
             continue;
           }
-
           characterWordsData.push(entry);
         }
       }
     }
   }
 
+  // Create custom color mapping
   let colorMapping = {};
   selectedMovieIds.map((movieId) => (colorMapping[MOVIE[movieId].name] = MOVIE[movieId].color));
 
+  // No data on selected characters to show
   if (!characterWordsData.length) {
     const emptyMessage = d3
       .create('h3')
@@ -40,6 +41,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     return;
   }
 
+  // Build chart
   screenTimeBarChart = StackedBarChart(characterWordsData, {
     x: (d) => d.words,
     y: (d) => d.character,
@@ -58,7 +60,7 @@ function createCharacterWordsChart(selectedCharacterIds, selectedMovieIds) {
     height,
   });
 
-  // update chart in div
+  // Populate it in DOM
   document.getElementById('character-words').innerHTML = '';
   document.getElementById('character-words').appendChild(screenTimeBarChart);
 }

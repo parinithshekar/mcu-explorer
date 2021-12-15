@@ -1,3 +1,4 @@
+// Options to select
 characterOriginList = Object.values(characterMasterData).map((characterInfo) => characterInfo.name);
 moviesOriginList = Object.values(movieMasterData).map((movieInfo) => movieInfo.name);
 
@@ -5,6 +6,7 @@ moviesOriginList = Object.values(movieMasterData).map((movieInfo) => movieInfo.n
 // characterDestinationList = Object.values(characterMasterData).map((character) => character.name);
 // movieDestinationList = Object.values(movieMasterData).map((movie) => movie.name);
 
+// Default selections
 characterDestinationList = [
   CHARACTER.IRON_MAN.name,
   CHARACTER.THANOS.name,
@@ -20,6 +22,7 @@ movieDestinationList = [
   MOVIE.BLACK_PANTHER.name,
 ];
 
+// Build character and movie selections
 var characterDropdown = sellect('#character-select', {
   originList: characterOriginList,
   destinationList: characterDestinationList,
@@ -40,27 +43,25 @@ characterDropdown.init();
 movieDropdown.init();
 
 function handleSelection(event, item) {
-  // Selection of characters and movies changed and triggered this function
-  selectedCharacterIds = characterDropdown.getSelected()
-  .map((characterName) => CHARACTER[characterName].id);
-  selectedMovieIds = movieDropdown.getSelected()
-  .map((movieName) => MOVIE[movieName].id);
+  // Selection of characters and movies changed
+  selectedCharacterIds = characterDropdown
+    .getSelected()
+    .map((characterName) => CHARACTER[characterName].id);
+  selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
   updateAllCharts(selectedCharacterIds, selectedMovieIds);
 }
 
 function handleSankeySelection(radio) {
-  // Selection of characters and movies changed and triggered this function
-
+  // Selection of the sankey links weight
   selectedCharacterIds = characterDropdown
     .getSelected()
     .map((characterName) => CHARACTER[characterName].id);
-
   selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
-  // console.log(radio.value);
   createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, radio.value);
 }
 
 function handleBarChartSelection() {
+  // Selection of ordered bar chart options
   const barYSelect = document.getElementById('barY');
   const barY = barYSelect.options[barYSelect.selectedIndex].value;
 
@@ -76,13 +77,13 @@ function handleBarChartSelection() {
 }
 
 function handleSankeyColorSelection() {
-  // Selection of characters and movies changed and triggered this function
+  // Selection of sankey color
   selectedCharacterIds = characterDropdown
     .getSelected()
     .map((characterName) => CHARACTER[characterName].id);
   selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
 
-  // Get Sankey parameters
+  // Get other sankey parameters
   const sankeyParam = document.querySelector('input[name="sankeyParam"]:checked').value;
   const sankeyColorSelect = document.getElementById('sankeyColor');
   const sankeyColor = sankeyColorSelect.options[sankeyColorSelect.selectedIndex].value;
@@ -101,7 +102,7 @@ function updateAllCharts(selectedCharacterIds, selectedMovieIds) {
   const sankeyColor = sankeyColorSelect.options[sankeyColorSelect.selectedIndex].value;
   createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, sankeyParam, sankeyColor);
 
-  // createOrderedMovieStatsChart(selectedMovieIds, 'gross', 'descending');
+  // Create ordered bar chart
   handleBarChartSelection();
 
   createParallelCoordinateChart(selectedMovieIds);
