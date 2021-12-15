@@ -23,6 +23,7 @@ movieDestinationList = [
 var characterDropdown = sellect('#character-select', {
   originList: characterOriginList,
   destinationList: characterDestinationList,
+  type: 'character',
   onInsert: handleSelection,
   onRemove: handleSelection,
 });
@@ -30,6 +31,7 @@ var characterDropdown = sellect('#character-select', {
 var movieDropdown = sellect('#movie-select', {
   originList: moviesOriginList,
   destinationList: movieDestinationList,
+  type: 'movie',
   onInsert: handleSelection,
   onRemove: handleSelection,
 });
@@ -39,18 +41,20 @@ movieDropdown.init();
 
 function handleSelection(event, item) {
   // Selection of characters and movies changed and triggered this function
-  selectedCharacterIds = characterDropdown
-    .getSelected()
-    .map((characterName) => CHARACTER[characterName].id);
-  selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
+  selectedCharacterIds = characterDropdown.getSelected()
+  .map((characterName) => CHARACTER[characterName].id);
+  selectedMovieIds = movieDropdown.getSelected()
+  .map((movieName) => MOVIE[movieName].id);
   updateAllCharts(selectedCharacterIds, selectedMovieIds);
 }
 
 function handleSankeySelection(radio) {
   // Selection of characters and movies changed and triggered this function
+
   selectedCharacterIds = characterDropdown
     .getSelected()
     .map((characterName) => CHARACTER[characterName].id);
+
   selectedMovieIds = movieDropdown.getSelected().map((movieName) => MOVIE[movieName].id);
   // console.log(radio.value);
   createCharacterMovieSankeyChart(selectedCharacterIds, selectedMovieIds, radio.value);

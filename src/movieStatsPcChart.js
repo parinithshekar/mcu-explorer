@@ -17,7 +17,24 @@ function createParallelCoordinateChart(selectedMovieIds) {
     };
   });
 
-  const movieStatsPcChart = ParallelCoordinateChart(movieStatsData, ['id', 'name', 'year']);
+  // Custom scales for each movieStat
+  statNames = Object.keys(movieStats[selectedMovieIds[0]]);
+  statsDomain = {};
+  statNames.map(
+    (movieStat) =>
+      (statsDomain[movieStat] = [
+        0,
+        d3.max(Object.values(movieStats), (d) => +d[movieStat]) +
+          d3.min(Object.values(movieStats), (d) => +d[movieStat]),
+      ])
+  );
+  statsDomain['awards'] = statsDomain['nominations'];
+
+  const movieStatsPcChart = ParallelCoordinateChart(movieStatsData, statsDomain, [
+    'id',
+    'name',
+    'year',
+  ]);
 
   document.getElementById('parallel-coo-chart').innerHTML = '';
   document.getElementById('parallel-coo-chart').appendChild(movieStatsPcChart);

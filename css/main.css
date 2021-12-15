@@ -1,3 +1,7 @@
+body {
+  width: 100vw;
+}
+
 .main-container {
   padding: 1rem;
   width: calc(100vw - 2rem);

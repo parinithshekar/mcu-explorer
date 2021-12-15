@@ -16,9 +16,15 @@ function createCharacterShdbStatsChart(selectedCharacterIds) {
       statsEntry = [];
       characterAbilities = characterStats[characterId];
       for (ability in characterAbilities) {
+        // Tier is a confusing attribute which is not in the same scale
+        if (ability === 'Tier') {
+          continue;
+        }
         abilityEntry = {
           axis: ability,
-          value: scaleAbilityStat(ability, characterAbilities[ability]),
+          // scaling abilities is useful when including Tier in the chart
+          // value: scaleAbilityStat(ability, characterAbilities[ability]),
+          value: characterAbilities[ability],
           realValue: characterAbilities[ability],
           characterId: characterId,
         };
