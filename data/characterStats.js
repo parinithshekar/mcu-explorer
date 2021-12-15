@@ -254,6 +254,8 @@ const characterStats = {
     Tier: 1,
   },
 };
+
+// Setup distribution information for all abilities for scaling
 let abilityStatistics = {};
 for (ability of abilities) {
   const allValues = Object.values(characterStats).map((stats) => stats[ability]);
@@ -262,6 +264,7 @@ for (ability of abilities) {
   abilityStatistics[ability] = { max: maxValue, min: minValue };
 }
 
+// Scale a given ability value according to its distribution across the dataset
 function scaleAbilityStat(ability, value) {
   const abilityInfo = abilityStatistics[ability];
   const multiplier = 100 / (abilityInfo.max + 0.25 * abilityInfo.min);
